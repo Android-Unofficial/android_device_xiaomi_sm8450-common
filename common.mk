@@ -145,8 +145,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, hardware/dolby/dolby.mk)
 
 PRODUCT_PACKAGES += \
-    libstagefright_foundation-v33 \
-    XiaomiDolby
+    libstagefright_foundation-v33
 
 # DRM
 PRODUCT_PACKAGES += \
