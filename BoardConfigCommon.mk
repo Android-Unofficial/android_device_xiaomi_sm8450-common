@@ -9,6 +9,14 @@ include vendor/xiaomi/sm8450-common/BoardConfigVendor.mk
 
 COMMON_PATH := device/xiaomi/sm8450-common
 
+# RisingOS
+TARGET_ENABLE_BLUR := true
+WITH_GMS := true
+TARGET_CORE_GMS := true
+TARGET_CORE_GMS_EXTRAS := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_INCLUDE_GOOGLE_DIALER := true
+
 # A/B
 AB_OTA_PARTITIONS += \
     boot \
