@@ -27,6 +27,22 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/sm8450-common/sm8450-common-vendor.mk)
 
+# Sign
+$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
+
+# RisingOS
+ifeq ($(filter mayfly unicorn diting,$(PRODUCT_DEVICE)), $(PRODUCT_DEVICE))
+  PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Snapdragon 8 Plus Gen 1" \
+    RisingMaintainer="KernelPanix"
+endif
+
+ifeq ($(filter cupid zeus,$(PRODUCT_DEVICE)), $(PRODUCT_DEVICE))
+  PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Snapdragon 8 Gen 1" \
+    RisingMaintainer="KernelPanix"
+endif
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
