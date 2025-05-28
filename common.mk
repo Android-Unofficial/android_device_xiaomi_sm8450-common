@@ -31,17 +31,25 @@ $(call inherit-product, vendor/xiaomi/sm8450-common/sm8450-common-vendor.mk)
 $(call inherit-product, vendor/lineage-priv/keys/keys.mk)
 
 # RisingOS
-ifeq ($(filter mayfly unicorn diting,$(PRODUCT_DEVICE)), $(PRODUCT_DEVICE))
+TARGET_ENABLE_BLUR := true
+WITH_GMS := true
+TARGET_CORE_GMS := true
+TARGET_CORE_GMS_EXTRAS := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := false
+TARGET_INCLUDE_GOOGLE_DIALER := true
+
+ifeq ($(filter mayfly unicorn diting, $(LINEAGE_BUILD)), $(LINEAGE_BUILD))
   PRODUCT_BUILD_PROP_OVERRIDES += \
-    RisingChipset="Snapdragon 8 Plus Gen 1" \
-    RisingMaintainer="KernelPanix"
+    RisingChipset="Snapdragon 8 Plus Gen 1"
 endif
 
-ifeq ($(filter cupid zeus,$(PRODUCT_DEVICE)), $(PRODUCT_DEVICE))
+ifeq ($(filter cupid zeus, $(LINEAGE_BUILD)), $(LINEAGE_BUILD))
   PRODUCT_BUILD_PROP_OVERRIDES += \
-    RisingChipset="Snapdragon 8 Gen 1" \
-    RisingMaintainer="KernelPanix"
+    RisingChipset="Snapdragon 8 Gen 1"
 endif
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingMaintainer="KernelPanix"
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
